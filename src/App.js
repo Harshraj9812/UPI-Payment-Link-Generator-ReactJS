@@ -1,9 +1,26 @@
 import './App.css';
+import CreateLink from './Components/CreateLink';
+
+// React-Router-dom
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Pay from './Components/Pay';
 
 function App() {
+
   return (
     <div>
-        <h1>UPI Payment Link Generator</h1>
+      <Router>
+        <Routes>
+
+          <Route exact path="/" element={
+            <CreateLink />
+          } />
+          <Route exact path="/pay" element={
+            <Pay />
+          } />
+
+        </Routes>
+      </Router>
     </div>
   );
 }
