@@ -15,7 +15,7 @@ function App() {
           <Route exact path="/" element={
             <CreateLink />
           } />
-          <Route exact path="/pay" element={
+          <Route path="/pay" element={
             <Pay />
           } />
 
