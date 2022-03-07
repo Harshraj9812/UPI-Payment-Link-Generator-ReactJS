@@ -4,6 +4,8 @@ import CreateLink from './Components/CreateLink';
 // React-Router-dom
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Pay from './Components/Pay';
+import Footer from './Components/Footer';
+import UpiApps from './Components/UpiApps';
 
 function App() {
 
@@ -20,6 +22,8 @@ function App() {
           } />
 
         </Routes>
+        <UpiApps />
+        <Footer />
       </Router>
     </div>
   );
