@@ -7,8 +7,9 @@ export default function CreateLink() {
         setForm({ ...form, [event.target.name]: event.target.value });
     }
 
-    const webisteLink = "http://localhost:3000/"
-    let link = webisteLink + "pay/?pn=" + form.name + "&pa=" + form.upi + "&cu=INR&am=" + form.amount
+    // To Get Current URL of Website (window.location.href)
+    const webisteLink = window.location.href;
+    let link = webisteLink+"pay/?pn="+form.name+"&pa="+form.upi+"&cu=INR&am="+form.amount
 
     const [copyClipboard, setcopyClipboard] = useState("Copy Your Payment Link !")
     const [copyButton, setCopyButton] = useState("primary")
