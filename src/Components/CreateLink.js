@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
 import QRCode from 'react-qr-code'
 
+
 export default function CreateLink() {
     const [form, setForm] = useState({ name: "", upi: "", amount: "" })
     const handleOnChange = (event) => {
         setForm({ ...form, [event.target.name]: event.target.value });
+        setQr("Creating QR Code ...")
     }
 
     // To Get Current URL of Website (window.location.href)
@@ -13,41 +15,56 @@ export default function CreateLink() {
 
     const [copyClipboard, setcopyClipboard] = useState("Copy Your Payment Link !")
     const [copyButton, setCopyButton] = useState("primary")
-    const [qr, setQr] = useState("Creating QR Code ...")
+    const [qr, setQr] = useState("Support Developer ☝️")
 
     const handleCopyClick = (e) => {
         // Added "e.preventDefault()" to prevent page to not reload
         e.preventDefault();
         navigator.clipboard.writeText(link)
-        setQr("QR Code is Ready !")
+        setQr("QR Code is Ready ☝️")
         setCopyButton("warning")
         setcopyClipboard("Link is Created and Copied to Clipboard !")
     }
 
+    const handleAnotherLink = (event) => {
+        // Added "event.preventDefault()" to prevent page to not reload
+        event.preventDefault();
+        setForm({ name: "", upi: "", amount: "" })
+        setcopyClipboard("Copy Your Payment Link !")
+        setCopyButton("primary")
+        setQr("Support Developer ☝️")
+    }
+    
+    let QrLink = "upi://pay?pn="+form.name+"&pa="+form.upi+"&cu=INR&am="+form.amount
+    if (form.name==='' && form.upi==='' && form.amount==='')
+    {
+        QrLink = "upi://pay?pn=Harsh Raj&pa=7684028503@paytm&cu=INR&am=150"
+    }
 
     return (
         <>
             <div className="container">
-                {/* <h2 className='text-center my-4'>HR QR Code & UPI Link Generator</h2> */}
                 <h2 className='text-center mt-5'>Create Shareable UPI Payment Link with Custom QR Code</h2>
                 <div className="row mt-5">
                     <div className="col-md-6 d-flex justify-content-center mt-4 mb-5">
-                        <QRCode value={`upi://pay?pn=${form.name}&pa=${form.upi}&cu=INR&am=${form.amount}`} bgColor='black' fgColor='white' />
+                        <QRCode value={QrLink} bgColor='black' fgColor='white' />
                     </div>
                     <form className='col-md-6'>
                         <div className="mb-3">
                             <label htmlFor="exampleInputEmail1" className="form-label">Enter Your Name</label>
-                            <input type="text" className="form-control" id="name" name='name' onChange={handleOnChange} aria-describedby="emailHelp" placeholder='Name' required />
+                            <input type="text" className="form-control" id="name" name='name' onChange={handleOnChange} aria-describedby="emailHelp" placeholder='Name' required  value={form.name}/>
                         </div>
                         <div className="mb-3">
                             <label htmlFor="exampleInputPassword1" className="form-label">Enter Your UPI ID</label>
-                            <input type="email" className="form-control" id="upi" name='upi' onChange={handleOnChange} placeholder='UPI ID' required />
+                            <input type="email" className="form-control" id="upi" name='upi' onChange={handleOnChange} placeholder='UPI ID' required value={form.upi}/>
                         </div>
                         <div className="mb-3">
                             <label htmlFor="exampleInputPassword1" className="form-label">Fix Amount</label>
-                            <input type="number" className="form-control" id="amount" name='amount' onChange={handleOnChange} placeholder='Amount (Optional)' />
+                            <input type="number" className="form-control" id="amount" name='amount' onChange={handleOnChange} placeholder='Amount (Optional)' value={form.amount}/>
                         </div>
                         <button disabled={form.name === '' || form.upi === ''} className={`btn btn-${copyButton} my-1`} onClick={handleCopyClick}>{copyClipboard}</button>
+
+                        <button disabled={copyClipboard === 'Copy Your Payment Link !'} className={`btn btn-primary my-1 mx-2`} onClick={handleAnotherLink}>Create Another Link</button>
                     </form>
                 </div>
                 <div className="col-md-6 d-flex justify-content-center mb-5">
