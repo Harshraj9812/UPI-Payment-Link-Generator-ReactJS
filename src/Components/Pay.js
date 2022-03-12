@@ -1,9 +1,14 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import QRCode from 'react-qr-code'
 import { Link } from 'react-router-dom';
 
 
 const Pay = () => {
+  useEffect(() => {
+    document.title = "Paying Thorough - HR UPI Payment Gateway";
+    // eslint-disable-next-line
+}, []);
+
   // Getting Get Parameters from GET Request From URL
   const queryParams = new URLSearchParams(window.location.search);
   const pname = queryParams.get('pn');

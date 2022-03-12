@@ -1,8 +1,14 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import QRCode from 'react-qr-code'
 
 
 export default function CreateLink() {
+    useEffect(() => {
+        document.title = "Generate Sharable Link - HR UPI Payment Gateway";
+        // eslint-disable-next-line
+    }, []);
+    
+    
     const [form, setForm] = useState({ name: "", upi: "", amount: "" })
     const handleOnChange = (event) => {
         setForm({ ...form, [event.target.name]: event.target.value });
