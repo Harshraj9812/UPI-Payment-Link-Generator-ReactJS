@@ -14,10 +14,12 @@ export default function CreateLink() {
         setForm({ ...form, [event.target.name]: event.target.value });
         setQr("Creating QR Code ...")
     }
+    // Removing Space from Name
+    let nameWithoutSpace = form.name.replace(/ +/g, "");
 
     // To Get Current URL of Website (window.location.href)
     const webisteLink = window.location.href;
-    let link = webisteLink + "pay/?pn=" + form.name + "&pa=" + form.upi + "&cu=INR&am=" + form.amount
+    let link = webisteLink + "pay/?pn=" + nameWithoutSpace + "&pa=" + form.upi + "&cu=INR&am=" + form.amount
 
     const [copyClipboard, setcopyClipboard] = useState("Copy Your Payment Link !")
     const [copyButton, setCopyButton] = useState("primary")
