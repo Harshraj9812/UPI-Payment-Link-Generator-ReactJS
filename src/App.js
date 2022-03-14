@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Pay from './Components/Pay';
 import Footer from './Components/Footer';
 import UpiApps from './Components/UpiApps';
+import Shop from './Components/Shop';
 
 function App() {
 
@@ -18,6 +19,12 @@ function App() {
             <CreateLink />
           } />
           <Route path="/pay" element={
+            <Pay />
+          } />
+          <Route path="/shop" element={
+            <Shop />
+          } />
+          <Route path="/shop/pay" element={
             <Pay />
           } />
 
