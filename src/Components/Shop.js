@@ -4,7 +4,7 @@ import QRCode from 'react-qr-code'
 
 export default function Shop() {
     useEffect(() => {
-        document.title = "Generate Sharable Link - HR UPI Payment Gateway";
+        document.title = "Mohan Metals - UPI Payment Gateway";
         // eslint-disable-next-line
     }, []);
     
@@ -51,7 +51,7 @@ export default function Shop() {
     return (
         <>
             <div className="container">
-                <h2 className='text-center mt-5'>Create Shareable UPI Payment Link with Custom QR Code</h2>
+                <h2 className='text-center mt-5'>Mohan Metals - UPI Payment Gateway</h2>
 
                 <div className="row mt-5">
 

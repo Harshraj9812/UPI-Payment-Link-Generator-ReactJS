@@ -3,7 +3,7 @@ import QRCode from 'react-qr-code'
 import { Link } from 'react-router-dom';
 
 
-const Pay = () => {
+const Pay = (props) => {
   useEffect(() => {
     document.title = "Paying Thorough - HR UPI Payment Gateway";
     // eslint-disable-next-line
@@ -25,7 +25,7 @@ const Pay = () => {
     <>
       {/* http://localhost:3000/?pn=test&pa=uid&am=100 */}
       <div className="container">
-        <h2 className='text-center mt-5'>Pay using QR Code or Click to Pay Now</h2>
+        <h2 className='text-center mt-5'>{props.heading}</h2>
 
         <div className="row mt-5">
 

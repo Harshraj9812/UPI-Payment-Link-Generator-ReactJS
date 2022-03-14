@@ -19,13 +19,13 @@ function App() {
             <CreateLink />
           } />
           <Route path="/pay" element={
-            <Pay />
+            <Pay heading="Pay using QR Code or Click to Pay Now"/>
           } />
           <Route path="/shop" element={
             <Shop />
           } />
           <Route path="/shop/pay" element={
-            <Pay />
+            <Pay heading="Mohan Metals - Pay using QR Code or Click to Pay Now"/>
           } />
 
         </Routes>
